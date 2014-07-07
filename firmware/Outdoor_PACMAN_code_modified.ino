@@ -154,39 +154,33 @@
           }
       
       void tosdCard(){
-	            // This function writes the headers of the data file on to the SD Card
-        dataFile.print("Date");
-        dataFile.print("\t");
-        dataFile.print("Time");
-        dataFile.print("\t");
-        dataFile.print("Dust");
-        dataFile.print("\t");
-        dataFile.print("Humdity");
-        dataFile.print("\t");
-        dataFile.println("Temperature");
-        /* dataFile.print("\t");
-        dataFile.print("CO Signal");
-        dataFile.print("\t");
-        dataFile.println("CO Status");
-        //dataFile.println("  ");     */
-        Serial.println(fname); // Show the file name of the created file
-    
-        Serial.print("Date");
-        Serial.print("\t");
-        Serial.print("Time"); 
-        Serial.print("\t");
-        Serial.print("Dust");
-        Serial.print("\t");
-        Serial.print("Humdity");
-        Serial.print("\t");
-        Serial.print("Temperature");
-        Serial.println("\t");
-        /* Serial.print("CO Signal");
-        Serial.print("\t");
-        Serial.println("CO Status");
-        */
-        
-        count = 1;
+	// This function writes the headers of the data file on to the SD Card
+	dataFile.print("Date");
+	dataFile.print("\t");
+	dataFile.print("Time");
+	dataFile.print("\t");
+	dataFile.print("Dust");
+	dataFile.print("\t");
+	dataFile.print("Humidity");
+	dataFile.print("\t");
+	dataFile.print("Battery");
+	dataFile.print("\t");
+	dataFile.println("Temperature");
+	
+	Serial.println(fname); // Show the file name of the created file
+	Serial.print("Date");
+	Serial.print("\t");
+	Serial.print("Time"); 
+	Serial.print("\t");
+	Serial.print("Dust");
+	Serial.print("\t");
+	Serial.print("Humidity");
+	Serial.print("\t");
+	Serial.print("Battery");
+	Serial.print("\t");
+	Serial.print("Temperature");
+	Serial.println("\t");
+	count = 1;
       }
       
       void RTC_send_register(byte reg, byte value){
