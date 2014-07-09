@@ -1,0 +1,136 @@
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 9/07/2014 10:01:36 a.m.
+
+BeginCmp
+TimeStamp = /53B9FA0C;
+Reference = A21;
+ValeurCmp = ANALOG2;
+IdModule  = PINHEAD1-3;
+EndCmp
+
+BeginCmp
+TimeStamp = /53B9FA1B;
+Reference = A31;
+ValeurCmp = ANALOG3;
+IdModule  = PINHEAD1-3;
+EndCmp
+
+BeginCmp
+TimeStamp = /53B9F9FD;
+Reference = APM1;
+ValeurCmp = ARDUINO_PROMINI;
+IdModule  = Halley-ARDUINO_PRO_MINI;
+EndCmp
+
+BeginCmp
+TimeStamp = /53BB6875;
+Reference = BattV1;
+ValeurCmp = BATTV;
+IdModule  = PINHEAD1-2;
+EndCmp
+
+BeginCmp
+TimeStamp = /53B5D70C;
+Reference = C1;
+ValeurCmp = 220u;
+IdModule  = C2V8;
+EndCmp
+
+BeginCmp
+TimeStamp = /53BA039A;
+Reference = Chr1;
+ValeurCmp = RTC;
+IdModule  = PINHEAD1-6;
+EndCmp
+
+BeginCmp
+TimeStamp = /53B9E1EE;
+Reference = Dust1;
+ValeurCmp = SHARPDUST;
+IdModule  = PINHEAD1-6;
+EndCmp
+
+BeginCmp
+TimeStamp = /53B9FB1C;
+Reference = GUS1;
+ValeurCmp = 5MMRGBLED;
+IdModule  = SparkFun-LED-TRICOLOR-THROUGHHOLE;
+EndCmp
+
+BeginCmp
+TimeStamp = /53B9E1FD;
+Reference = JP1;
+ValeurCmp = FTDI_BASICPTH;
+IdModule  = SparkFun-FTDI_BASIC;
+EndCmp
+
+BeginCmp
+TimeStamp = /53BA2EFD;
+Reference = P1;
+ValeurCmp = Serial;
+IdModule  = PINHEAD1-2;
+EndCmp
+
+BeginCmp
+TimeStamp = /53BB8565;
+Reference = P2;
+ValeurCmp = CONN_2;
+IdModule  = PINHEAD1-2;
+EndCmp
+
+BeginCmp
+TimeStamp = /53B9DB77;
+Reference = R1;
+ValeurCmp = 10k;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /53B9FB76;
+Reference = R2;
+ValeurCmp = 270;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /53B9FB96;
+Reference = R3;
+ValeurCmp = 270;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /53B9FB9C;
+Reference = R4;
+ValeurCmp = 270;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /53B5D761;
+Reference = R5;
+ValeurCmp = 150;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /53B9E078;
+Reference = SD1;
+ValeurCmp = MICRO-SD;
+IdModule  = adafruit-MICROSD;
+EndCmp
+
+BeginCmp
+TimeStamp = /53BB6E9E;
+Reference = SW1;
+ValeurCmp = SPST;
+IdModule  = PINHEAD1-2;
+EndCmp
+
+BeginCmp
+TimeStamp = /53B5E440;
+Reference = T&H1;
+ValeurCmp = DHT22;
+IdModule  = PINHEAD1-3;
+EndCmp
+
+EndListe
