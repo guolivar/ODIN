@@ -1,17 +1,17 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 9/07/2014 10:01:36 a.m.
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 9/07/2014 4:31:48 p.m.
 
 BeginCmp
 TimeStamp = /53B9FA0C;
 Reference = A21;
 ValeurCmp = ANALOG2;
-IdModule  = PINHEAD1-3;
+IdModule  = header3;
 EndCmp
 
 BeginCmp
 TimeStamp = /53B9FA1B;
 Reference = A31;
 ValeurCmp = ANALOG3;
-IdModule  = PINHEAD1-3;
+IdModule  = header3;
 EndCmp
 
 BeginCmp
@@ -32,7 +32,7 @@ BeginCmp
 TimeStamp = /53B5D70C;
 Reference = C1;
 ValeurCmp = 220u;
-IdModule  = C2V8;
+IdModule  = C1;
 EndCmp
 
 BeginCmp
@@ -64,17 +64,10 @@ IdModule  = SparkFun-FTDI_BASIC;
 EndCmp
 
 BeginCmp
-TimeStamp = /53BA2EFD;
+TimeStamp = /53BCC847;
 Reference = P1;
-ValeurCmp = Serial;
-IdModule  = PINHEAD1-2;
-EndCmp
-
-BeginCmp
-TimeStamp = /53BB8565;
-Reference = P2;
-ValeurCmp = CONN_2;
-IdModule  = PINHEAD1-2;
+ValeurCmp = POWER2;
+IdModule  = conn2pwr;
 EndCmp
 
 BeginCmp
@@ -116,13 +109,13 @@ BeginCmp
 TimeStamp = /53B9E078;
 Reference = SD1;
 ValeurCmp = MICRO-SD;
-IdModule  = adafruit-MICROSD;
+IdModule  = microSD;
 EndCmp
 
 BeginCmp
 TimeStamp = /53BB6E9E;
 Reference = SW1;
-ValeurCmp = SPST;
+ValeurCmp = BATTEST;
 IdModule  = PINHEAD1-2;
 EndCmp
 
@@ -130,7 +123,7 @@ BeginCmp
 TimeStamp = /53B5E440;
 Reference = T&H1;
 ValeurCmp = DHT22;
-IdModule  = PINHEAD1-3;
+IdModule  = header3;
 EndCmp
 
 EndListe
