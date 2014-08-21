@@ -194,7 +194,7 @@
       void setup() {
         Serial.begin(9600);
         // initialize the alarm pin as an input:
-        pinMode(buttonPin, INPUT);
+        pinMode(buttonPin, INPUT_PULLUP); //Interrupt triggers randomly if pin not set to pull-up
         dht.begin();  
         Wire.begin();
         RTC.begin();
