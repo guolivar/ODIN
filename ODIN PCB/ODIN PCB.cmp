@@ -1,7 +1,7 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 9/07/2014 4:31:48 p.m.
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 29/08/2014 11:16:41 a.m.
 
 BeginCmp
-TimeStamp = /53B9FA0C;
+TimeStamp = /53BCCEF1;
 Reference = A21;
 ValeurCmp = ANALOG2;
 IdModule  = header3;
@@ -120,7 +120,7 @@ IdModule  = PINHEAD1-2;
 EndCmp
 
 BeginCmp
-TimeStamp = /53B5E440;
+TimeStamp = /53BCCC6C;
 Reference = T&H1;
 ValeurCmp = DHT22;
 IdModule  = header3;
