@@ -6,6 +6,10 @@
       #include "DHT.h"   //DHT22 library
       #include <SD.h>    //SD library
       #include <Wire.h> //Aux Chronodot library
+      #include <avr/interrupt.h>
+      #include <avr/power.h>
+      #include <avr/sleep.h>
+      #include <avr/io.h>
       //Chronodot setup
       #include "Chronodot.h"  
       Chronodot RTC;
@@ -191,10 +195,37 @@
         Wire.endTransmission();
        }
       
+      void sleepNow(void)
+    {
+    // Set pin 2 as interrupt and attach handler:
+    attachInterrupt(1, pinInterrupt, LOW); // Interrupt on digital pin 3.
+    delay(100);
+    //
+    // Choose our preferred sleep mode:
+   set_sleep_mode(SLEEP_MODE_PWR_DOWN);// lowest power mode
+   //
+    // Set sleep enable (SE) bit:
+    sleep_enable();
+    //
+    // Put the device to sleep:
+    sleep_mode();
+    //
+    // Upon waking up, sketch continues from this point.
+    sleep_disable();
+    RTC_send_register(0x0F,0);// Cancel alarm flag so interrupt not reasserted
+    }  
+    void pinInterrupt(void)
+      {
+          detachInterrupt(1);
+      }
+      
       void setup() {
         Serial.begin(9600);
-        // initialize the alarm pin as an input:
-        pinMode(buttonPin, INPUT_PULLUP); //Interrupt triggers randomly if pin not set to pull-up
+        // Pilfered from elsewhere - enable input pullups to minimise leakage when asleep.
+        DDRD &= B00000011;       // set Arduino pins 2 to 7 as inputs, leaves 0 & 1 (RX & TX) as is
+        DDRB = B00000000;        // set pins 8 to 13 as inputs
+        PORTD |= B11111100;      // enable pullups on pins 2 to 7
+        PORTB |= B11111111;      // enable pullups on pins 8 to 13
         dht.begin();  
         Wire.begin();
         RTC.begin();
@@ -228,17 +259,14 @@
           RTC_send_register(0x0A,B10000000);
           // This will enable Alarm and also enables the alarm interrupt to be generated on the SQW pin
           RTC_send_register(0x0E,B00000101);  
-                                                      
+          RTC_send_register(0x0F,0); // 28_08_2014 Discovered that it is important to reset SQW interrupt when power up ODIN                                            
       }
     
     
       void loop() {
-        // read the state of the alarm output:
-        buttonState = digitalRead(buttonPin);
         
-        // check if the alarm output is high or low.
-        if (buttonState == LOW) {   
-	  RTC_send_register(0x0F,0);    // This is to cancel the alarm flag of the RTC:
+        
+        
           String currTstr=timestring();    // Call the timestring function to gather current date and time
 	  //Call the dustSignal function to measure dust
 	  dustVoltage = dustSignal();
@@ -298,6 +326,7 @@
 	    Serial.println(fname); // If the file does not open, display the file name/ just for testing purpose
 	    delay(60000);
 	  }
-      }
-          
+  sleepNow();  
     }
+          
+    
