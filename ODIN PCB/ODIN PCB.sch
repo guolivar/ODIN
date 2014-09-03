@@ -1,10 +1,11 @@
 EESchema Schematic File Version 2
-LIBS:SparkFun
+LIBS:Halley
+LIBS:adafruit
+LIBS:ODIN OCB parts
 LIBS:power
 LIBS:device
 LIBS:transistors
 LIBS:conn
-LIBS:ODIN OCB parts
 LIBS:linear
 LIBS:regul
 LIBS:74xx
@@ -31,16 +32,14 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:Halley
-LIBS:adafruit
-LIBS:ODIN PCB-cache
+LIBS:SparkFun
 EELAYER 27 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "14 jul 2014"
+Date "28 aug 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -140,7 +139,7 @@ $Comp
 L 5MMRGBLED GUS1
 U 1 1 53B9FB1C
 P 3700 4000
-F 0 "GUS1" H 3700 4000 60  0000 C CNN
+F 0 "GUS1" H 3700 4050 60  0000 C CNN
 F 1 "5MMRGBLED" H 3700 4000 60  0000 C CNN
 F 2 "" H 3700 4000 60  0000 C CNN
 F 3 "" H 3700 4000 60  0000 C CNN
@@ -258,32 +257,6 @@ Text Label 6150 2000 0    60   ~ 0
 VCC
 Text Label 5900 2000 3    60   ~ 0
 GND
-$Comp
-L VCC #PWR2
-U 1 1 53C335C0
-P 4200 3050
-F 0 "#PWR2" H 4200 3150 30  0001 C CNN
-F 1 "VCC" H 4200 3150 30  0000 C CNN
-F 2 "" H 4200 3050 60  0000 C CNN
-F 3 "" H 4200 3050 60  0000 C CNN
-	1    4200 3050
-	1    0    0    -1  
-$EndComp
-Text Label 4200 3050 3    60   ~ 0
-VCC
-$Comp
-L GND #PWR3
-U 1 1 53C33737
-P 4500 2950
-F 0 "#PWR3" H 4500 2950 30  0001 C CNN
-F 1 "GND" H 4500 2880 30  0001 C CNN
-F 2 "" H 4500 2950 60  0000 C CNN
-F 3 "" H 4500 2950 60  0000 C CNN
-	1    4500 2950
-	-1   0    0    1   
-$EndComp
-Text Label 4500 3250 1    60   ~ 0
-GND
 Text Label 3850 4600 2    60   ~ 0
 VCC
 Text Label 4900 4850 0    60   ~ 0
@@ -299,9 +272,9 @@ D4
 Text Label 5800 4450 0    60   ~ 0
 D2
 Text Label 5050 3850 0    60   ~ 0
-D3
+D8
 Text Label 5800 4550 0    60   ~ 0
-D3
+SQW
 Text Label 5050 4150 0    60   ~ 0
 D5
 Text Label 5800 4750 0    60   ~ 0
@@ -339,7 +312,7 @@ GND
 Text Label 4900 6500 0    60   ~ 0
 VCC
 Text Label 5800 5050 0    60   ~ 0
-SQW
+D8
 Text Label 5900 6300 0    60   ~ 0
 SQW
 Text Label 7400 6000 0    60   ~ 0
@@ -349,11 +322,11 @@ VCC
 Text Label 7400 6300 0    60   ~ 0
 SCL
 Text Label 7500 5450 0    60   ~ 0
-SCL
+SDA
 Text Label 7400 6450 0    60   ~ 0
 SDA
 Text Label 7500 5550 0    60   ~ 0
-SDA
+SCL
 Text Label 7550 5350 0    60   ~ 0
 A3
 Text Label 8100 5300 0    60   ~ 0
@@ -428,7 +401,6 @@ Wire Wire Line
 Wire Wire Line
 	6100 2600 6700 2600
 Connection ~ 6100 2300
-Connection ~ 7650 5850
 Wire Wire Line
 	6000 5150 5800 5150
 Wire Wire Line
@@ -441,10 +413,6 @@ Wire Wire Line
 	5350 3400 5350 3550
 Wire Wire Line
 	5150 3400 5150 3550
-Wire Wire Line
-	4200 3050 4200 3250
-Wire Wire Line
-	4500 3050 4500 3250
 Wire Wire Line
 	4000 4600 3700 4600
 Wire Wire Line
