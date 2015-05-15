@@ -1,0 +1,23 @@
+EESchema-DOCLIB  Version 2.0  Date: 30/07/2014 10:02:17 a.m.
+#
+$CMP CONN_2
+D Symbole general de connecteur
+K CONN
+$ENDCMP
+#
+$CMP POWER2
+D Symbole general de connecteur
+K CONN
+$ENDCMP
+#
+$CMP RH+T
+D Symbole general de connecteur
+K CONN
+$ENDCMP
+#
+$CMP SERIALCONN
+D Symbole general de connecteur
+K CONN
+$ENDCMP
+#
+#End Doc Library
