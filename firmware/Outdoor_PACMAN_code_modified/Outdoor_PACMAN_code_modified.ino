@@ -268,10 +268,11 @@
           String currTstr=timestring();    // Call the timestring function to gather current date and time
 	  // Obtain the average of 20 measurements ... between 20 and 30 seconds.
 	  // Calculate averages and save those averages
+	  int fsmp;
 	  dustVoltage = 0;
 	  h = 0.0;
 	  t = 0.0;
-	  for (int fsmp = 0;fsmp<20;fsmp++){
+	  for (fsmp = 0;fsmp<20;fsmp++){
 		  //Call the dustSignal function to measure dust
 		  dustVoltage = dustVoltage + dustSignal();
 	  }
@@ -329,7 +330,8 @@
 	    // dataFile.println("error opening Data.txt");
 	    Serial.println("error opening Data.txt");
 	    Serial.println(fname); // If the file does not open, display the file name/ just for testing purpose
-	    while (int attack = 1;attack < 60; attack++){
+	    int attack;
+	    for (attack = 1;attack < 60; attack++){
 		    digitalWrite(13,HIGH);
 		    delay(250);
 		    digitalWrite(13,LOW);
