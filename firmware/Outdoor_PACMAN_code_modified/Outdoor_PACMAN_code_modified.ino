@@ -35,6 +35,8 @@
       // change this to match your SD shield or module;
       //  Adafruit SD shields and modules: pin 10
       const int chipSelect = 10;
+      int attack;
+      int firstloop = 1;
       
       
       // Declare the variables strings and char for naming the SD Card file name
@@ -276,7 +278,7 @@
 		  //Call the dustSignal function to measure dust
 		  dustVoltage = dustVoltage + dustSignal();
 	  }
-	  dustVoltage = dustVoltage / fsmp
+	  dustVoltage = dustVoltage / 20
 	  // Call the humidity and Temperature functions to read the current values 
 	  h = humidRead();
 	  t = tempRead();
@@ -327,10 +329,11 @@
 	  else {
 	    // if the file didn't open, print an error:
 	    // Serial.println("error opening test.txt");
-	    // dataFile.println("error opening Data.txt");
+	    // dataFile.println("error opening Data.txt"
+	    // If the file does not open, display the file name/ just for testing purpose
 	    Serial.println("error opening Data.txt");
-	    Serial.println(fname); // If the file does not open, display the file name/ just for testing purpose
-	    int attack;
+	    Serial.println(fname);
+	    // And have a little heart attack
 	    for (attack = 1;attack < 60; attack++){
 		    digitalWrite(13,HIGH);
 		    delay(250);
@@ -339,7 +342,12 @@
             }
 	    delay(60000);
 	  }
-  sleepNow();  
-    }
+	  // Need to cancel interrupt flag if it occurred during start-up routine before putting to sleep
+	  if (firstloop = 1){
+		  RTC_send_register(0x0F,0);
+		  firstloop = 0;
+	  }
+	  sleepNow();
+      }
           
     
