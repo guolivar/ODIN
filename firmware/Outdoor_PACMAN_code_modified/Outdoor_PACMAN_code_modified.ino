@@ -35,6 +35,8 @@
       // change this to match your SD shield or module;
       //  Adafruit SD shields and modules: pin 10
       const int chipSelect = 10;
+      int attack;
+      int firstloop = 1;
       
       
       // Declare the variables strings and char for naming the SD Card file name
@@ -56,7 +58,7 @@
       const int buttonPin = 8;     // the digital pin that the alarm output is connected to(SQW)
       const int ledPin = 5;	// digital pin that has the CARD STATUS LED attached to.
       const int battPin= 3;	//Analog pin for the battery voltage read
-      
+      float h,t;
       int buttonState = 0;         // variable for reading the alarm status(LOW or HIGH)      
    
       
@@ -82,8 +84,8 @@
 	  delayMicroseconds(9720);
 	}
 	average = dusttotal/Nsamples; 
-	dustVoltage = average*5000/1024;
-	return dustVoltage;
+	long int xdustVoltage = average*5000/1024;
+	return xdustVoltage;
 	
       }
          
@@ -264,24 +266,30 @@
     
     
       void loop() {
-        
-        
-        
+
           String currTstr=timestring();    // Call the timestring function to gather current date and time
-	  //Call the dustSignal function to measure dust
-	  dustVoltage = dustSignal();
+	  // Obtain the average of 20 measurements ... between 20 and 30 seconds.
+	  // Calculate averages and save those averages
+	  int fsmp;
+	  dustVoltage = 0;
+	  h = 0.0;
+	  t = 0.0;
+	  for (fsmp = 0;fsmp<20;fsmp++){
+		  //Call the dustSignal function to measure dust
+		  dustVoltage = dustVoltage + dustSignal();
+	  }
+	  dustVoltage = dustVoltage / 20
 	  // Call the humidity and Temperature functions to read the current values 
-	  float h = humidRead();
-	  float t = tempRead();
+	  h = humidRead();
+	  t = tempRead();
 	  // open the file. Note that only one file can be open at a time,
-          // Thus you have to close this one before opening another.
-          //fname=String("DATA_"+String(sdCard)+".txt");
-          fname=String(String(sdCard)+".txt");
-          fname.toCharArray(file_fname,fname.length()+1); // Convert the string to char   
-          dataFile = SD.open(file_fname, FILE_WRITE);
-         
-                 
-           // if the file has opend, call the functions then write the data on the file
+	  // Thus you have to close this one before opening another.
+	  //fname=String("DATA_"+String(sdCard)+".txt");
+	  fname=String(String(sdCard)+".txt");
+	  fname.toCharArray(file_fname,fname.length()+1); // Convert the string to char   
+	  dataFile = SD.open(file_fname, FILE_WRITE);
+
+	  // if the file has opend, call the functions then write the data on the file
           if (dataFile) {          
             if (count <1){
               tosdCard();
@@ -321,12 +329,25 @@
 	  else {
 	    // if the file didn't open, print an error:
 	    // Serial.println("error opening test.txt");
-	    // dataFile.println("error opening Data.txt");
+	    // dataFile.println("error opening Data.txt"
+	    // If the file does not open, display the file name/ just for testing purpose
 	    Serial.println("error opening Data.txt");
-	    Serial.println(fname); // If the file does not open, display the file name/ just for testing purpose
+	    Serial.println(fname);
+	    // And have a little heart attack
+	    for (attack = 1;attack < 60; attack++){
+		    digitalWrite(13,HIGH);
+		    delay(250);
+		    digitalWrite(13,LOW);
+		    delay(250);
+            }
 	    delay(60000);
 	  }
-  sleepNow();  
-    }
+	  // Need to cancel interrupt flag if it occurred during start-up routine before putting to sleep
+	  if (firstloop = 1){
+		  RTC_send_register(0x0F,0);
+		  firstloop = 0;
+	  }
+	  sleepNow();
+      }
           
     
