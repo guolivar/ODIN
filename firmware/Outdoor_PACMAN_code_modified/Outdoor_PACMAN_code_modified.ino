@@ -3,8 +3,10 @@
 */
 //DHT22 library
 #include <dht.h>
-//Chronodot libraries
+//SD card libraries
+#include <SD.h>
 #include <SPI.h>
+//Chronodot libraries
 #include <RTClib.h>
 #include <RTC_DS3231.h>
 #include <Wire.h>
@@ -20,7 +22,6 @@ dht DHT;
 // Connect pin 2 of the sensor to whatever your DHTPIN is
 // Connect pin 4 (on the right) of the sensor to GROUND
 // Connect a 10K resistor from pin 2 (data) to pin 1 (power) of the sensor
-DHT dht(DHTPIN, DHTTYPE);
 
 //SD and filesystem setup
 /*
@@ -86,13 +87,13 @@ long int dustSignal() {
 // Reading temperature or humidity takes about 250 milliseconds!
 // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
 float tempRead(){
-	float t = DHT.temperature();
+	float t = DHT.temperature;
 	return t;    
 }  
 // Reading temperature or humidity takes about 250 milliseconds!
 // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
 float humidRead(){
-	float h = DHT.humidity();  
+	float h = DHT.humidity;  
 	return h;    
 }
 
@@ -261,8 +262,9 @@ void loop() {
 		//Call the dustSignal function to measure dust
 		dustVoltage = dustVoltage + dustSignal();
 	}
-	dustVoltage = dustVoltage / 20
-	// Call the humidity and Temperature functions to read the current values 
+	dustVoltage = dustVoltage / 20;
+	// Call the humidity and Temperature functions to read the current values
+	int chk = DHT.read22(DHT22_PIN)
 	h = humidRead();
 	t = tempRead();
 	// open the file. Note that only one file can be open at a time,
