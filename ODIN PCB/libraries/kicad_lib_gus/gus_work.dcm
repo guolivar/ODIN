@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP A2235-H
+D GPS module from MAESTRO
+K gps, antenna
+F /run/media/gustavo/gus_external/work/Documents/Instruments/Dev/thialfi_wiki/GPS_1833178.pdf
+$ENDCMP
+#
+#End Doc Library
